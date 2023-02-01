@@ -1,4 +1,4 @@
-import { Box, Flex, useTheme, useToken } from '@chakra-ui/react'
+import { Flex, useToken } from '@chakra-ui/react'
 
 const Card = ({ children, ...props }) => {
   const [radius] = useToken('radii', ['xl'])

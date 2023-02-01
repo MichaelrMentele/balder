@@ -11,7 +11,7 @@ const Condition = () => {
   return null
 }
 
-const ConditionsList = ({ conditions }) => {
+const ConditionsList = ({ conditions: _ }) => {
   return (
     <VStack alignItems="left">
       <Condition />

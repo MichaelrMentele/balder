@@ -1,14 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import PlayerActionsPool from './PlayerActionsPool'
+import PartyPage from './PartyPage'
 
 //   Improve this test with help from the Redwood Testing Doc:
-//    https://redwoodjs.com/docs/testing#testing-components
+//   https://redwoodjs.com/docs/testing#testing-pages-layouts
 
-describe('PlayerActionsPool', () => {
+describe('PartyPage', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<PlayerActionsPool />)
+      render(<PartyPage />)
     }).not.toThrow()
   })
 })

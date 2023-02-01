@@ -1,7 +1,5 @@
 // This object will be used to override Chakra-UI theme defaults.
 
-const { baseStyle } = require('@chakra-ui/react')
-
 const violet = {
   main: '#7209B7',
   50: '#F5E7FE',

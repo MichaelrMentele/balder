@@ -1,25 +1,28 @@
 import {
-  Box,
   VStack,
   HStack,
   Stack,
   Text,
-  Button,
   Heading,
   Icon,
   Tooltip,
 } from '@chakra-ui/react'
 
 import Card from '../Card/Card'
+import DiceButton from '../DiceButton/DiceButton'
 import SectionHeading from '../SectionHeading/SectionHeading'
 
 import { standard } from './Skills.mock'
 
 const Skill = ({ skill }) => {
+  // TODO: skill modifier not set in mock data
+  const modifier = 5
   return (
     <Card>
       <Stack alignContent="center" direction="row">
-        <Button>{skill.modifier || 0}</Button>
+        <DiceButton diceDef={'1d20'} modifier={modifier}>
+          {modifier}
+        </DiceButton>
         <Text>{skill.name}</Text>
         <Tooltip label={skill.desc} fontSize="md">
           <Icon as={skill.icon} />
@@ -29,6 +32,7 @@ const Skill = ({ skill }) => {
   )
 }
 
+// The set of ability types and their presentational meta data
 const ABILITY_CONFIG = {
   STR: {
     icon: null,
@@ -56,14 +60,18 @@ const ABILITY_CONFIG = {
   },
 }
 
-const SKILL_CONFIG = {}
+// TODO: create real sample skills for a player
+// const SKILL_CONFIG = {}
 
 const AbilityScoreSkillGroup = ({ ability }) => {
   return (
     <Stack width="100%">
       <HStack>
         <Heading size="sm">{ability.name}</Heading>
-        <Icon as={ABILITY_CONFIG[ability.name].icon} />
+        <Tooltip label={ability.desc} fontSize="md">
+          <Icon as={ABILITY_CONFIG[ability.name].icon} />
+        </Tooltip>
+        <Text>{ability.modifier}</Text>
       </HStack>
       <Stack>
         {ability.skills.map((skill, index) => (
@@ -79,12 +87,9 @@ const Skills = () => {
     <Card>
       <VStack alignItems="left">
         <SectionHeading>Skills</SectionHeading>
-        {standard.data.abilityScores.map(
-          (ability, index) =>
-            ability.skills.length > 0 && (
-              <AbilityScoreSkillGroup key={index} ability={ability} />
-            )
-        )}
+        {standard.data.abilityScores.map((ability, index) => (
+          <AbilityScoreSkillGroup key={index} ability={ability} />
+        ))}
       </VStack>
     </Card>
   )

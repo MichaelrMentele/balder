@@ -8,11 +8,27 @@ generator client {
   binaryTargets = "native"
 }
 
-// Define your own datamodels here and run `yarn redwood prisma migrate dev`
-// to create migrations for them and apply to your dev DB.
-// TODO: Please remove the following example:
-model UserExample {
+// Is a User a player?
+model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
+
+  playerCampaign Campaign? @relation(fields: [campaignId], references: [id])
+  campaignId     Int?
+
+  ownedCampaigns Campaign[] @relation(name: "gmCampaign")
+}
+
+model Campaign {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+
+  // A campaign can have many players and players can participate in many campaigns
+  players User[]
+
+  // A GM can have many campaigns, but a campaign only has one GM
+  gm     User @relation(name: "gmCampaign", fields: [userId], references: [id])
+  userId Int
 }

@@ -1,4 +1,4 @@
-import { Box, HStack, Text, VStack } from '@chakra-ui/react'
+import { Box, Text, VStack } from '@chakra-ui/react'
 
 import Card from '../Card/Card'
 import SectionHeading from '../SectionHeading/SectionHeading'

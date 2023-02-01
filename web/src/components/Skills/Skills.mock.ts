@@ -5,7 +5,9 @@ export const standard = {
         full_name: 'Strength',
         index: 'str',
         name: 'STR',
+        desc: 'Strength measures bodily power, athletic training, and the extent to which you can exert raw physical force.',
         skills: [
+          { desc: ['Saving throw'], name: 'Saving throw' },
           {
             desc: [
               'Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming.',
@@ -18,13 +20,16 @@ export const standard = {
         full_name: 'Constitution',
         index: 'con',
         name: 'CON',
-        skills: [],
+        desc: 'Constitution measures health and stamina.',
+        skills: [{ desc: ['Saving throw'], name: 'Saving throw' }],
       },
       {
         full_name: 'Dexterity',
         index: 'dex',
         name: 'DEX',
+        desc: 'Dexterity measures agility, reflexes, and balance.',
         skills: [
+          { desc: ['Saving throw'], name: 'Saving throw' },
           {
             desc: [
               "Your Dexterity (Acrobatics) check covers your attempt to stay on your feet in a tricky situation, such as when you're trying to run across a sheet of ice, balance on a tightrope, or stay upright on a rocking ship's deck. The GM might also call for a Dexterity (Acrobatics) check to see if you can perform acrobatic stunts, including dives, rolls, somersaults, and flips.",
@@ -49,7 +54,9 @@ export const standard = {
         full_name: 'Wisdom',
         index: 'wis',
         name: 'WIS',
+        desc: 'Wisdom reflects how attuned you are to the world around you.',
         skills: [
+          { desc: ['Saving throw'], name: 'Saving throw' },
           {
             desc: [
               "When there is any question whether you can calm down a domesticated animal, keep a mount from getting spooked, or intuit an animal's intentions, the GM might call for a Wisdom (Animal Handling) check. You also make a Wisdom (Animal Handling) check to control your mount when you attempt a risky maneuver.",
@@ -86,7 +93,9 @@ export const standard = {
         full_name: 'Intelligence',
         index: 'int',
         name: 'INT',
+        desc: 'Intelligence measures mental acuity, accuracy of recall, and the ability to reason.',
         skills: [
+          { desc: ['Saving throw'], name: 'Saving throw' },
           {
             desc: [
               'Your Intelligence (Arcana) check measures your ability to recall lore about spells, magic items, eldritch symbols, magical traditions, the planes of existence, and the inhabitants of those planes.',
@@ -123,7 +132,9 @@ export const standard = {
         full_name: 'Charisma',
         index: 'cha',
         name: 'CHA',
+        desc: 'Charisma measures your ability to interact effectively with others.',
         skills: [
+          { desc: ['Saving throw'], name: 'Saving throw' },
           {
             desc: [
               "Your Charisma (Deception) check determines whether you can convincingly hide the truth, either verbally or through your actions. This deception can encompass everything from misleading others through ambiguity to telling outright lies. Typical situations include trying to fast- talk a guard, con a merchant, earn money through gambling, pass yourself off in a disguise, dull someone's suspicions with false assurances, or maintain a straight face while telling a blatant lie.",

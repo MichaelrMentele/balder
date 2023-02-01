@@ -1,14 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import StandardLayout from './StandardLayout'
+import EncountersPage from './EncountersPage'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //   https://redwoodjs.com/docs/testing#testing-pages-layouts
 
-describe('StandardLayout', () => {
+describe('EncountersPage', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<StandardLayout />)
+      render(<EncountersPage />)
     }).not.toThrow()
   })
 })

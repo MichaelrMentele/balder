@@ -15,20 +15,38 @@ import {
   BoxProps,
   FlexProps,
   useToken,
-  MenuIcon,
+  Divider,
+  Select,
+  VStack,
 } from '@chakra-ui/react'
+
+import { navigate, routes } from '@redwoodjs/router'
+
+import { MenuIcon, HomeIcon } from 'src/components/Icons/Icons'
 
 interface LinkItemProps {
   name: string
   icon: ReactNode
+  route: () => string
 }
 
 // TODO: nice to have some icons here
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'Home', icon: null },
-  { name: 'Encounter', icon: null },
-  { name: 'Settings', icon: null },
+  { name: 'Home', icon: HomeIcon, route: routes.home },
+  { name: 'Journal', icon: HomeIcon, route: routes.home },
+  { name: 'Encounters', icon: HomeIcon, route: routes.playerCombat },
+  { name: 'Settings', icon: HomeIcon, route: routes.settings },
 ]
+
+/*
+ * SidebarContent for infrequent items such as profile and app settings
+ */
+const Footer = {}
+
+/*
+ * Link items that are infrequently used such level up, rest, etc.
+ */
+const DownTimeLinkItems = {}
 
 export function StandardLayout({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -81,23 +99,82 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       h="full"
       {...rest}
     >
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+      <VStack
+        h="20"
+        direction={'column'}
+        alignItems="left"
+        mx="4"
+        justifyContent="space-between"
+      >
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
           Logo
         </Text>
-        <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
-      </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
-          {link.name}
+        <Select placeholder="Select Adventure"></Select>
+        <NavItem
+          key={'adventure'}
+          icon={HomeIcon}
+          onClick={() => navigate(routes.adventure())}
+        >
+          {'Adventure'}
         </NavItem>
-      ))}
+        <NavItem
+          key={'play'}
+          icon={HomeIcon}
+          onClick={() => navigate(routes.play())}
+        >
+          {'Play'}
+        </NavItem>
+        <NavItem
+          key={'map'}
+          icon={HomeIcon}
+          onClick={() => navigate(routes.map())}
+        >
+          {'Map'}
+        </NavItem>
+        <NavItem
+          key={'journal'}
+          icon={HomeIcon}
+          onClick={() => navigate(routes.journal())}
+        >
+          {'Journal'}
+        </NavItem>
+        <NavItem
+          key={'encounters'}
+          icon={HomeIcon}
+          onClick={() => navigate(routes.encounters())}
+        >
+          {'Past Encounters'}
+        </NavItem>
+        <Divider />
+        <NavItem
+          key={'party'}
+          icon={HomeIcon}
+          onClick={() => navigate(routes.party())}
+        >
+          {'Party'}
+        </NavItem>
+        <NavItem
+          key={'characters'}
+          icon={HomeIcon}
+          onClick={() => navigate(routes.characters())}
+        >
+          {'Characters'}
+        </NavItem>
+        <Divider />
+        <NavItem
+          key={'settings'}
+          icon={HomeIcon}
+          onClick={() => navigate(routes.settings())}
+        >
+          {'Settings'}
+        </NavItem>
+      </VStack>
     </Box>
   )
 }
 
 interface NavItemProps extends FlexProps {
-  icon: void
+  icon: ReactNode
   children: ReactText
 }
 const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
@@ -108,9 +185,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
       _focus={{ boxShadow: 'none' }}
     >
       <Flex
-        align="center"
         p="4"
-        mx="4"
         borderRadius="lg"
         role="group"
         cursor="pointer"
@@ -120,7 +195,8 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
         }}
         {...rest}
       >
-        {icon && (
+        {/* // TODO fix this -- bug */}
+        {/* {icon && (
           <MenuIcon
             mr="4"
             fontSize="16"
@@ -129,7 +205,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
             }}
             as={icon}
           />
-        )}
+        )} */}
         {children}
       </Flex>
     </Link>

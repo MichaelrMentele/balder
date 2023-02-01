@@ -1,9 +1,3 @@
-// In this file, all Page components from 'src/pages` are auto-imported. Nested
-// directories are supported, and should be uppercase. Each subdirectory will be
-// prepended onto the component name.
-//
-// Examples:
-//
 // 'src/pages/HomePage/HomePage.js'         -> HomePage
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
@@ -15,8 +9,16 @@ const Routes = () => {
   return (
     <Router>
       <Set wrap={StandardLayout}>
-        <Route path="/home" page={HomePage} name="home" />
-        <Route path="/player-combat" page={PlayerCombatPage} name="playerCombat" />
+        <Route path="/" page={PlayerCombatPage} name="home" />
+        <Route path="/play" page={PlayerCombatPage} name="play" />
+        <Route path="/map" page={MapPage} name="map" />
+        <Route path="/journal" page={JournalPage} name="journal" />
+        <Route path="/adventure" page={AdventurePage} name="adventure" />
+        <Route path="/party" page={PartyPage} name="party" />
+        <Route path="/encounters" page={EncountersPage} name="encounters" />
+        <Route path="/character-edit/{id}" page={CharacterEditPage} name="characterEdit" />
+        <Route path="/characters" page={CharactersPage} name="characters" />
+        <Route path="/settings" page={SettingsPage} name="settings" />
         <Route notfound page={NotFoundPage} />
       </Set>
     </Router>
