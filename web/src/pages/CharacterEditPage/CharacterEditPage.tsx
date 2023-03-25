@@ -202,9 +202,9 @@ const CharacterCreatePage = () => {
             <TabList>
               <Tab>Profile</Tab>
               <Tab>Lineage</Tab>
-              <Tab>CharacterClasses</Tab>
+              <Tab>Character Classes</Tab>
               <Tab>Ability Scores</Tab>
-              <Tab>One Time Grants</Tab>
+              <Tab>Grants</Tab>
             </TabList>
             <Button>Finish</Button>
           </HStack>
