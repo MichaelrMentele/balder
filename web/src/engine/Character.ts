@@ -23,7 +23,10 @@ const CharacterState = {
   class: CharacterClassInstance,
 }
 
+// Actions use resources to apply effects
+// A resource is an item including fists, a weapon, a spell slot, a ki point, etc
 class Character {
+  actions: Action[] // sum of racial, equipment, class actions, and granted actions
   skills: Skill[] // sum of racial, equipment, class skills, and granted skills
   spells: Spell[] // sum of racial, equipment, class spells, and granted skills
   abilities: Ability[] // sum of racial, equipment, class abilities, and granted skills
@@ -32,6 +35,8 @@ class Character {
   traits: Trait[] // sum of racial, equipment, and class traits
   effects: Effect[] // effects that are currently active on the character
   abilityScores: CharacterState // ability scores
+  initiative: any
+  initiative: any
 
   useAction(ability: Ability) {
     //

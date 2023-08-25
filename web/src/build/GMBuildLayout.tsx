@@ -4,7 +4,6 @@ import { ReactText } from 'react'
 import {
   IconButton,
   Box,
-  CloseButton,
   Flex,
   useColorModeValue,
   Link,
@@ -107,7 +106,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         justifyContent="space-between"
       >
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+          Balder
         </Text>
         <Select placeholder="Select Adventure"></Select>
         <NavItem
@@ -132,26 +131,19 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           {'Map'}
         </NavItem>
         <NavItem
-          key={'journal'}
-          icon={HomeIcon}
-          onClick={() => navigate(routes.journal())}
-        >
-          {'Journal'}
-        </NavItem>
-        <NavItem
-          key={'encounters'}
-          icon={HomeIcon}
-          onClick={() => navigate(routes.encounters())}
-        >
-          {'Past Encounters'}
-        </NavItem>
-        <Divider />
-        <NavItem
           key={'party'}
           icon={HomeIcon}
           onClick={() => navigate(routes.party())}
         >
           {'Party'}
+        </NavItem>
+        <Divider />
+        <NavItem
+          key={'journal'}
+          icon={HomeIcon}
+          onClick={() => navigate(routes.journal())}
+        >
+          {'Journal'}
         </NavItem>
         <NavItem
           key={'characters'}
@@ -234,7 +226,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       />
 
       <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Logo
+        Balder
       </Text>
     </Flex>
   )

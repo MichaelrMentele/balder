@@ -8,27 +8,92 @@ generator client {
   binaryTargets = "native"
 }
 
-// Is a User a player?
+// A User can be a player or a GM or both. A player and a GM can have many adventures.
 model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
 
-  playerCampaign Campaign? @relation(fields: [campaignId], references: [id])
-  campaignId     Int?
+  playerAdventure Adventure? @relation(fields: [adventureId], references: [id])
+  adventureId     Int?
 
-  ownedCampaigns Campaign[] @relation(name: "gmCampaign")
+  ownedAdventures Adventure[] @relation(name: "gmAdventure")
+  characters      Character[]
 }
 
-model Campaign {
+// A player can have many characters and a character can only belong to one player
+model Character {
   id          Int     @id @default(autoincrement())
   name        String
   description String?
 
-  // A campaign can have many players and players can participate in many campaigns
+  // Players can have many characters
+  owner   User @relation(fields: [ownerId], references: [id])
+  ownerId Int
+
+  // A character can only belong to one adventure
+  adventure   Adventure @relation(fields: [adventureId], references: [id])
+  adventureId Int
+
+  // A character can have multiple classes
+  characterClasses   CharacterClass? @relation(fields: [characterClassesId], references: [id])
+  characterClassesId Int?
+
+  effects      Effect[]
+  classLevel   ClassLevel? @relation(fields: [classLevelId], references: [id])
+  classLevelId Int?
+}
+
+model CharacterClass {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+
+  // A character class can have many characters
+  character   Character[]
+  Adventure   Adventure?  @relation(fields: [adventureId], references: [id])
+  adventureId Int?
+}
+
+model ClassLevel {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+
+  // A class level can have many characters
+  character Character[]
+}
+
+model Effect {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  character   Character? @relation(fields: [characterId], references: [id])
+  characterId Int?
+
+  action   Action? @relation(fields: [actionId], references: [id])
+  actionId Int?
+}
+
+model Action {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  // An action can have many effects
+  effects Effect[]
+}
+
+model Adventure {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+
+  // A adventure can have many players and players can participate in many adventures
   players User[]
 
-  // A GM can have many campaigns, but a campaign only has one GM
-  gm     User @relation(name: "gmCampaign", fields: [userId], references: [id])
-  userId Int
+  // A GM can have many adventures, but a adventure only has one GM
+  gm               User             @relation(name: "gmAdventure", fields: [userId], references: [id])
+  userId           Int
+  character        Character[]
+  characterClasses CharacterClass[]
 }

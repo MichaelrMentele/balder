@@ -1,8 +1,14 @@
+import { MetaTags } from '@redwoodjs/web'
+import 'reactflow/dist/style.css'
+
 import {
   Button,
+  Checkbox,
   Heading,
   HStack,
   Input,
+  List,
+  ListItem,
   NumberInput,
   NumberInputField,
   Select,
@@ -16,9 +22,7 @@ import {
   Tooltip,
   VStack,
 } from '@chakra-ui/react'
-
-import { Link, routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import ReactFlow, { Background, Controls } from 'reactflow'
 
 import Card from 'src/components/Card/Card'
 
@@ -192,6 +196,53 @@ const StartingGrants = () => {
   return null
 }
 
+/**
+ * @description Key actions on this component:
+ *
+ * Down the line we could be very fancy and set up development paths
+ * that are specific to the character, but for now we can just have
+ * a list of grants that the DM can give to the character. As well as
+ * some notes around the grant.
+ *
+ * TODO: this should be a list of events with links to grants on the
+ * grants page. These can be things that require the player to pass
+ * DC checks and so on.
+ */
+const CharacterDevelopment = () => {
+  const grants = [
+    {
+      name: 'Spirit Medium',
+      description: 'You are able to sense spirits within 30 ft of you.',
+      granted: true,
+      viewableByPlayer: false,
+      contentHidden: false,
+    },
+    {
+      name: 'Grant 2',
+      description: 'Grant 2 description',
+      viewableByPlayer: false,
+      contentHidden: true,
+    },
+  ]
+  return (
+    <List>
+      {/* // TODO: filter if current user can't view, maybe should happen on backend */}
+      {grants.map((g) => (
+        <ListItem key={g.name}>
+          <HStack>
+            <Checkbox isChecked={g.granted} disabled />
+            <Text as="b">{g.contentHidden ? 'Unknown' : g.name}</Text>
+            <Text>
+              {g.contentHidden ? 'What could this be?' : g.description}
+            </Text>
+          </HStack>
+          <Text>Requires: ...</Text>
+        </ListItem>
+      ))}
+    </List>
+  )
+}
+
 const CharacterCreatePage = () => {
   return (
     <>
@@ -205,6 +256,7 @@ const CharacterCreatePage = () => {
               <Tab>Character Classes</Tab>
               <Tab>Ability Scores</Tab>
               <Tab>Grants</Tab>
+              <Tab>Development</Tab>
             </TabList>
             <Button>Finish</Button>
           </HStack>
@@ -236,6 +288,11 @@ const CharacterCreatePage = () => {
           <TabPanel>
             <Card>
               <StartingGrants />
+            </Card>
+          </TabPanel>
+          <TabPanel>
+            <Card>
+              <CharacterDevelopment />
             </Card>
           </TabPanel>
         </TabPanels>

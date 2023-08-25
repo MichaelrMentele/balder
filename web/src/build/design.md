@@ -17,6 +17,8 @@ There is an initial state:
 
 Then you conclude the story and it ends. This journey is organized into a sequence of sessions of play.
 
+https://whimsical.com/gm-design-ideas-68ds8B3j9Bwow4w2XyDaGy
+
 # Build your world's initial state
 * build your locations
 * set a starting point
@@ -35,3 +37,20 @@ Now our session comes down to two things:
 * world development
 
 That is all! These developments are organized into encounters.
+
+---
+An adventure is a collection of (mostly) pre-built bits of data that is woven together into a sequence. But most of the time you want to sketch things out JIT. There is no need to get way ahead of your team, other than with the story (where things will go emotionally).
+
+Building a new adventure requires building a set of locations and linking them together. These linkages can have rules/requirements.
+
+It also requires the setting of constraints for the adventure in the form of valid character classes. For now, we will let any class be created by invited users -- the GM can always object or delete the class as needed so no need for complicated controls around these constraints.
+
+Locations have creatures, items, dooDads, nested locations, and characters. Any of these can provide information that goes into the game log. They also have descriptions -- what are the five senses? Are their 1 - 2 that are owrth calling out?
+
+Things happen in locations. Characters and creatures enter them and have battles. People die and are left behind. The location gets destroyed. An event happens that changes the location completely.
+
+On top of these objects a story is woven. The story is composed of events that happen which develop the world or the characters or both. A peril the characters have to grow to overcome.
+
+The story has two parts:
+* the plot (the world development)
+* character development

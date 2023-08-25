@@ -1,4 +1,7 @@
 
+# 4/1
+Okay, let's start with a headless interaction.
+
 # 1/29
 Maybe I'm overthinking this. Maybe simply having a callback on the effect and on the requirement is enough..? The downside to a callback is that, if I don't have explicit types then I cannot easily upload them with content.
 
