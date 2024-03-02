@@ -1,4 +1,3 @@
-import { MetaTags } from '@redwoodjs/web'
 import 'reactflow/dist/style.css'
 
 import {
@@ -22,7 +21,6 @@ import {
   Tooltip,
   VStack,
 } from '@chakra-ui/react'
-import ReactFlow, { Background, Controls } from 'reactflow'
 
 import Card from 'src/components/Card/Card'
 
@@ -54,6 +52,7 @@ type CharacterClass = {
   type: ClassTypes
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 type Character = {
   profile: Profile
   lineage: Lineage

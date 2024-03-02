@@ -4,7 +4,6 @@ import { ReactText } from 'react'
 import {
   IconButton,
   Box,
-  CloseButton,
   Flex,
   useColorModeValue,
   Link,
@@ -18,16 +17,11 @@ import {
   Divider,
   Select,
   VStack,
-  Avatar,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
 } from '@chakra-ui/react'
 
 import { navigate, routes } from '@redwoodjs/router'
 
-import { MenuIcon, HomeIcon } from 'src/components/Icons/Icons'
+import { HomeIcon } from 'src/components/Icons/Icons'
 import { ProfilePopover } from 'src/components/ProfilePopover/ProfilePopover'
 
 interface LinkItemProps {
@@ -43,16 +37,6 @@ const LinkItems: Array<LinkItemProps> = [
   { name: 'Encounters', icon: HomeIcon, route: routes.playerCombat },
   { name: 'Settings', icon: HomeIcon, route: routes.settings },
 ]
-
-/*
- * SidebarContent for infrequent items such as profile and app settings
- */
-const Footer = {}
-
-/*
- * Link items that are infrequently used such level up, rest, etc.
- */
-const DownTimeLinkItems = {}
 
 export function StandardLayout({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -94,7 +78,7 @@ interface SidebarProps extends BoxProps {
   onClose: () => void
 }
 
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+const SidebarContent = ({ _onClose, ...rest }: SidebarProps) => {
   return (
     <Box
       bg={useColorModeValue('white', 'gray.900')}
@@ -122,6 +106,13 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           onClick={() => navigate(routes.adventure())}
         >
           {'Adventure'}
+        </NavItem>
+        <NavItem
+          key={'encounters'}
+          icon={HomeIcon}
+          onClick={() => navigate(routes.encounters())}
+        >
+          {'Play'}
         </NavItem>
         <NavItem
           key={'play'}
@@ -178,7 +169,7 @@ interface NavItemProps extends FlexProps {
   icon: ReactNode
   children: ReactText
 }
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
+const NavItem = ({ _icon, children, ...rest }: NavItemProps) => {
   return (
     <Link
       href="#"

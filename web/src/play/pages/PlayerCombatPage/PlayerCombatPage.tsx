@@ -4,12 +4,8 @@ import {
   GridItem,
   Heading,
   Tabs,
-  TabList,
-  Tab,
   TabPanels,
   TabPanel,
-  Flex,
-  Text,
   Wrap,
   WrapItem,
   Avatar,
@@ -21,7 +17,6 @@ import Conditions from 'src/components/Conditions/Conditions'
 import Hands from 'src/components/Hand/Hand'
 import PlayerActionsPool from 'src/components/PlayerActionsPool/PlayerActionsPool'
 import PlayerRoundActions from 'src/components/PlayerRoundActions/PlayerRoundActions'
-import Saves from 'src/components/Saves/Saves'
 import Skills from 'src/components/Skills/Skills'
 
 // TODO this whole set of panels is always in the context of a player right?

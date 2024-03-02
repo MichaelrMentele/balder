@@ -4,7 +4,7 @@ export const ListItem = ({ onClick, children }) => {
   return (
     <Card
       cursor={'pointer'}
-      _hover={{ background: 'red' }}
+      // _hover={{ background: 'red' }}
       backgroundColor="lightgray"
       width="100%"
       onClick={onClick}

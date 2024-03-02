@@ -124,11 +124,18 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           {'Play'}
         </NavItem>
         <NavItem
-          key={'map'}
+          key={'encounters'}
           icon={HomeIcon}
-          onClick={() => navigate(routes.map())}
+          onClick={() => navigate(routes.encounters())}
         >
-          {'Map'}
+          {'Encounters'}
+        </NavItem>
+        <NavItem
+          key={'agents'}
+          icon={HomeIcon}
+          onClick={() => navigate(routes.agents())}
+        >
+          {'Agents'}
         </NavItem>
         <NavItem
           key={'party'}
