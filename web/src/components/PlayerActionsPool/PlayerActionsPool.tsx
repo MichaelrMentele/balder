@@ -98,7 +98,7 @@ const sampleActions: Action[] = [
 ]
 
 const PlayerActionsPool = ({ actions }: { actions: Action[] }) => {
-  console.log(actions)
+  
   actions = sampleActions
   return (
     <Card>

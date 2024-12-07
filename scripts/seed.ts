@@ -18,9 +18,7 @@ export default async () => {
       // { name: 'jackie', email: 'jackie@example.com' },
       // { name: 'bob', email: 'bob@example.com' },
     ]
-    console.log(
-      "\nUsing the default './scripts/seed.{js,ts}' template\nEdit the file to add seed data\n"
-    )
+    
 
     // Note: if using PostgreSQL, using `createMany` to insert multiple records is much faster
     // @see: https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#createmany
@@ -30,7 +28,7 @@ export default async () => {
       //
       data.map(async (data: Prisma.UserExampleCreateArgs['data']) => {
         const record = await db.userExample.create({ data })
-        console.log(record)
+        
       })
     )
 
